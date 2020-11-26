@@ -45,7 +45,7 @@ button{
 }
 `
 export const Container = styled.div`
-  width: 94vw;
+  width: 90vw;
   max-width: 768px;
   height: 100vh;
 

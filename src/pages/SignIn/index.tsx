@@ -1,4 +1,5 @@
 import React, { FormEvent } from 'react'
+import { Link } from 'react-router-dom'
 import { useInput } from '../../hooks/useInput'
 import { Container } from '../../styles/global'
 import { FormLogin, InputForm, ButtonSubmit } from './styles'
@@ -28,6 +29,7 @@ const SignIn: React.FC = () => {
           onChange={setPassword}
         />
         <ButtonSubmit type="submit">Entrar</ButtonSubmit>
+        <Link to="/signup">Criar uma conta</Link>
       </FormLogin>
     </Container>
   )

@@ -7,6 +7,12 @@ export const FormLogin = styled.form`
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
 
   padding: 1.6rem;
+
+  a {
+    margin-top: 1.6rem;
+    padding: 0.8rem;
+    text-align: center;
+  }
 `
 export const InputForm = styled.input`
   width: 100%;
