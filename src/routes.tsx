@@ -1,11 +1,13 @@
 import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
-import Home from './pages/SignIn'
+import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
 
 const Routes = () => {
   return (
     <BrowserRouter>
-      <Route path="/" component={Home} />
+      <Route path="/" exact component={SignIn} />
+      <Route path="/signup" component={SignUp} />
     </BrowserRouter>
   )
 }

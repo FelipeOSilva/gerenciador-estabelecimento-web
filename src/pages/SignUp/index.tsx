@@ -1,20 +1,27 @@
 import React, { FormEvent } from 'react'
 import { useInput } from '../../hooks/useInput'
 import { Container } from '../../styles/global'
-import { FormLogin, InputForm, ButtonSubmit } from './styles'
+import { FormRegister, InputForm, ButtonSubmit } from './styles'
 
-const SignIn: React.FC = () => {
+const SignUp: React.FC = () => {
   const [email, setEmail] = useInput('')
+  const [name, setName] = useInput('')
   const [password, setPassword] = useInput('')
 
-  const handleSignIn = (e: FormEvent) => {
+  const handleSignUp = (e: FormEvent) => {
     e.preventDefault()
     return true
   }
 
   return (
     <Container>
-      <FormLogin onSubmit={handleSignIn}>
+      <FormRegister onSubmit={handleSignUp}>
+        <InputForm
+          placeholder="Nome"
+          type="text"
+          value={name}
+          onChange={setName}
+        />
         <InputForm
           placeholder="E-mail"
           type="text"
@@ -27,10 +34,10 @@ const SignIn: React.FC = () => {
           value={password}
           onChange={setPassword}
         />
-        <ButtonSubmit type="submit">Entrar</ButtonSubmit>
-      </FormLogin>
+        <ButtonSubmit type="submit">Cadastrar</ButtonSubmit>
+      </FormRegister>
     </Container>
   )
 }
 
-export default SignIn
+export default SignUp
