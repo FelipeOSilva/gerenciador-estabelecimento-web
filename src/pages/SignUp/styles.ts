@@ -7,6 +7,12 @@ export const FormRegister = styled.form`
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
 
   padding: 1.6rem;
+
+  a {
+    margin-top: 1.6rem;
+    padding: 0.8rem;
+    text-align: center;
+  }
 `
 export const InputForm = styled.input`
   width: 100%;
@@ -26,11 +32,11 @@ export const ButtonSubmit = styled.button`
   margin-top: 0.8rem;
   color: var(--color-white);
 
-  &:active{
+  &:active {
     opacity: 0.85;
   }
 
-  &:disabled{
+  &:disabled {
     opacity: 0.5;
   }
 `
