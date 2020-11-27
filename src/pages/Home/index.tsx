@@ -14,8 +14,11 @@ import { Container } from '../../styles/global'
 import {
   HeaderHome,
   NewEstablishmentButton,
-  EstablishmentsArea
+  EstablishmentsArea,
+  EstablishmentItem,
+  SearchEstablishmentButton
 } from './styles'
+import { useHistory } from 'react-router-dom'
 
 const myLocationIcon = Leaflet.icon({
   iconUrl: myLocation,
@@ -32,11 +35,12 @@ const establishmentIcon = Leaflet.icon({
 })
 
 interface Establishment {
-  id: string
+  id: number
   name: string
   description: string
   latitude: number
   longitude: number
+  distance?: number
 }
 
 type Position = {
@@ -46,25 +50,26 @@ type Position = {
 
 const Home = () => {
   const [establishments, setEstablishments] = useState<Establishment[]>([])
+  const history = useHistory()
   const [myPosition, setMyPosition] = useState<Position>({
     latitude: -3.7304762,
     longitude: -38.5434174
   })
 
-  useEffect(() => {
+  const searchEstablishment = () => {
     api
-      .get('establishments')
+      .get(
+        `establishments/?lat=${myPosition.latitude}&lng=${myPosition.longitude}`
+      )
       .then((response: AxiosResponse<{ data: Establishment[] }>) => {
         setEstablishments(response.data.data)
         console.log(response.data)
       })
       .catch((err) => {
-        if (err.response) {
-          console.log(err.response)
-        }
+        alert('Não foi possível buscar estabelecimentos!')
+        console.log(err)
       })
-  }, [])
-
+  }
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords
@@ -72,11 +77,15 @@ const Home = () => {
     })
   })
 
+  const handleSignOut = () => {
+    window.sessionStorage.removeItem('jwt_token')
+    history.replace('/')
+  }
   return (
     <Container>
       <HeaderHome>
         <h2>Home</h2>
-        <button>Sair</button>
+        <button onClick={handleSignOut}>Sair</button>
       </HeaderHome>
       <MapContainer
         center={[myPosition.latitude, myPosition.longitude]}
@@ -108,11 +117,21 @@ const Home = () => {
               </Popup>
             </Marker>
           ))}
-        <NewEstablishmentButton>
-          Cadastrar novo Estabelecimento
-        </NewEstablishmentButton>
       </MapContainer>
-      <EstablishmentsArea>{}</EstablishmentsArea>
+      <EstablishmentsArea>
+        <NewEstablishmentButton to="/new-establishment">
+          Cadastrar Estabelecimentos
+        </NewEstablishmentButton>
+        <SearchEstablishmentButton onClick={searchEstablishment}>
+          Buscar Estabelecimentos
+        </SearchEstablishmentButton>
+        {establishments?.map((establishment) => (
+          <EstablishmentItem key={establishment.id}>
+            <span>{establishment.name}</span>
+            <span>{establishment.distance} km</span>
+          </EstablishmentItem>
+        ))}
+      </EstablishmentsArea>
     </Container>
   )
 }
