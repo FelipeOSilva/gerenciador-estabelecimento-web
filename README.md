@@ -44,6 +44,6 @@ $ cp .env.example .env
 # Instalar todas as dependências
 $ yarn install
 
-# Comando para executar a aplicação, projeto rodando em localhost:3333
+# Comando para executar a aplicação, projeto rodando em localhost:3000
 $ yarn start
 ```
