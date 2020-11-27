@@ -1,17 +1,32 @@
 import React from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 import Home from './pages/Home'
 import NewEstablishment from './pages/NewEstablishment'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
+import { isAuthenticated } from './services/auth'
+
+const PrivateRoute: React.FC<{
+  component: React.FC
+  path: string
+  exact?: boolean
+}> = (props) => {
+  return isAuthenticated() ? <Route {...props} /> : <Redirect to="/" />
+}
 
 const Routes = () => {
   return (
     <BrowserRouter>
-      <Route path="/" exact component={SignIn} />
-      <Route path="/home" component={Home} />
-      <Route path="/signup" component={SignUp} />
-      <Route path="/new-establishment" component={NewEstablishment} />
+      <Switch>
+        <Route path="/" exact component={SignIn} />
+        <Route path="/signup" component={SignUp} />
+        <PrivateRoute path="/home" component={Home} />
+        <PrivateRoute
+          path="/new-establishment"
+          exact
+          component={NewEstablishment}
+        />
+      </Switch>
     </BrowserRouter>
   )
 }

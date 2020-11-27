@@ -92,7 +92,7 @@ const NewEstablishment: React.FC = () => {
   const handleNewEstablishment = async (e: FormEvent) => {
     e.preventDefault()
     try {
-      const response = await api.post('establishments', {
+      await api.post('establishments', {
         name: establishmentName,
         description: establishmentDescription,
         ...establishmentPosition
