@@ -1,15 +1,15 @@
 import React, { FormEvent } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useInput } from '../../hooks/useInput'
 import api from '../../services/api'
-import { Container } from '../../styles/global'
+import { Container, Header } from '../../styles/global'
 import { FormRegister, InputForm, ButtonSubmit } from './styles'
 
 const SignUp: React.FC = () => {
   const [email, setEmail] = useInput('')
   const [name, setName] = useInput('')
   const [password, setPassword] = useInput('')
-
+  const history = useHistory()
   const handleSignUp = async (e: FormEvent) => {
     e.preventDefault()
     try {
@@ -18,16 +18,23 @@ const SignUp: React.FC = () => {
         email,
         password
       })
+      alert('Usuário cadastrado com sucesso!')
+      history.replace('/')
       console.log(response.data)
     } catch (err) {
       if (err.response) {
-        console.log('Error: ', err.response.data.message)
+        alert(err.response.data.message)
+      } else {
+        alert('Não foi possível cadastrar novo usuário!')
       }
     }
   }
 
   return (
     <Container>
+      <Header>
+        <h2>Cadastre-se</h2>
+      </Header>
       <FormRegister onSubmit={handleSignUp}>
         <InputForm
           placeholder="Nome"

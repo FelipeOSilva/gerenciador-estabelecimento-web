@@ -5,7 +5,7 @@ export const FormLogin = styled.form`
   display: flex;
   flex-direction: column;
   width: 100%;
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);
 
   padding: 1.6rem;
 
@@ -23,14 +23,14 @@ export const InputForm = styled.input`
   padding: 1.6rem;
 `
 export const ButtonSubmit = styled.button`
-  background: var(--color-yellow);
+  background: var(--color-primary);
   border-radius: 1rem;
   padding: 1.6rem;
   font-size: 2rem;
   font-weight: 700;
 
   margin-top: 0.8rem;
-  color: var(--color-primary-shade);
+  color: var(--color-white);
 
   &:active{
     opacity: 0.85;

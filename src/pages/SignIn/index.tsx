@@ -1,20 +1,33 @@
 import React, { FormEvent } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useInput } from '../../hooks/useInput'
-import { Container } from '../../styles/global'
+import api from '../../services/api'
+import { Container, Header } from '../../styles/global'
 import { FormLogin, InputForm, ButtonSubmit } from './styles'
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useInput('')
   const [password, setPassword] = useInput('')
 
-  const handleSignIn = (e: FormEvent) => {
+  const history = useHistory()
+
+  const handleSignIn = async (e: FormEvent) => {
     e.preventDefault()
-    return true
+    try {
+      const { data } = await api.post('/login', { email, password })
+      const { token } = data.data
+      sessionStorage.setItem('jwt_token', token)
+      history.replace('/home')
+    } catch (err) {
+      alert('Usuário ou senha inválidos!')
+    }
   }
 
   return (
     <Container>
+      <Header>
+        <h2>Login</h2>
+      </Header>
       <FormLogin onSubmit={handleSignIn}>
         <InputForm
           placeholder="E-mail"

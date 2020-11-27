@@ -5,7 +5,7 @@ export const FormRegister = styled.form`
   display: flex;
   flex-direction: column;
   width: 100%;
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+  box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);
 
   padding: 1.6rem;
 

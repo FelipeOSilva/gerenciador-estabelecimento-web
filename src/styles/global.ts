@@ -9,6 +9,7 @@ export const GlobalStyles = createGlobalStyle`
   --color-input-background: #e7e7eb;
   --color-white: #fff;
   --color-red: #f32013;
+  --color-yellow: #d5de35;
 }
 
 * {
@@ -49,10 +50,17 @@ button{
 export const Container = styled.div`
   width: 90vw;
   max-width: 768px;
-  height: 100vh;
-
+  height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+`
+
+export const Header = styled.header`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-white);
+  padding: 1rem 0.8rem;
 `
