@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const FormRegister = styled.form`
+  background: var(--color-white);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -17,10 +18,9 @@ export const FormRegister = styled.form`
 export const InputForm = styled.input`
   width: 100%;
   margin-bottom: 1.6rem;
-  border-radius: 0.6rem;
-
-  padding: 1.2rem;
-  background: var(--color-input-background);
+  border-radius: 0.4px;
+  border: 1px solid var(--color-input-background);
+  padding: 1.6rem;
 `
 export const ButtonSubmit = styled.button`
   background: var(--color-primary);

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const FormLogin = styled.form`
+export const FormNewEstablishment = styled.form`
   background: var(--color-white);
   display: flex;
   flex-direction: column;
@@ -8,29 +8,29 @@ export const FormLogin = styled.form`
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
 
   padding: 1.6rem;
-
-  a {
-    margin-top: 1.6rem;
+  input{
+    width: 100%;
     padding: 0.8rem;
-    text-align: center;
   }
 `
+
 export const InputForm = styled.input`
   width: 100%;
   margin-bottom: 1.6rem;
-  border-radius: 0.4px;
+  border-radius: 0.4rem;
   border: 1px solid var(--color-input-background);
   padding: 1.6rem;
 `
+
 export const ButtonSubmit = styled.button`
-  background: var(--color-yellow);
+  background: var(--color-primary);
   border-radius: 1rem;
   padding: 1.6rem;
   font-size: 2rem;
   font-weight: 700;
 
   margin-top: 0.8rem;
-  color: var(--color-primary-shade);
+  color: var(--color-white);
 
   &:active{
     opacity: 0.85;
