@@ -8,6 +8,7 @@ export const GlobalStyles = createGlobalStyle`
   --color-primary-tint: #419c5e;
   --color-input-background: #e7e7eb;
   --color-white: #fff;
+  --color-red: #f32013;
 }
 
 * {
@@ -20,6 +21,7 @@ html,
 body,
 #root{
   height: 100vh;
+  background: var(--color-primary-tint);
 }
 
 #root{
@@ -52,4 +54,5 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 `
