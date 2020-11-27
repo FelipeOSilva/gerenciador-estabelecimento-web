@@ -57,6 +57,7 @@ export const Container = styled.div`
 `
 
 export const Header = styled.header`
+  margin-top: 3rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
